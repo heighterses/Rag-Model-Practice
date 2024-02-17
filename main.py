@@ -9,9 +9,8 @@ character_splitter = CharacterTextSplitter(chunk_size=200,
                                            separator='')
 
 
-recursive_splitter = RecursiveCharacterTextSplitter(chunk_size=200,
-                                                    chunk_overlap=0,
-                                                    separators=["\n\n", "\n", " ", ""])
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500,
+                                                    chunk_overlap=150)
 
 # text_splitter = CharacterTextSplitter(
 #     separator="\n",
@@ -27,13 +26,21 @@ load_dotenv(find_dotenv())
 
 openai.api_key = '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'
 
-loader = PyPDFLoader("pdf_files/MachineLearning-Lecture01.pdf")
-pages = loader.load()
-print(len(pages))
+loaders = [PyPDFLoader("pdf_files/MachineLearning-Lecture01.pdf"),
+           PyPDFLoader("pdf_files/MachineLearning-Lecture01.pdf")]
 
-page = pages[0]
-content = page.page_content
-print(content)
+documents = []
 
-test = recursive_splitter.split_text(content)
+for loader in loaders:
+    documents.extend(loader.load())
+
+
+# pages = documents
+# print(len(pages))
+
+# page = pages[0]
+# content = page.page_content
+# print(content)
+
+test = text_splitter.split_documents(documents)
 print(test)
