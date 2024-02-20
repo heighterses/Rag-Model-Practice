@@ -1,2 +1,2 @@
-from platform import python_version
-print(python_version())
+import os
+print(os.environ.get("OPENAI_API_KEY"))
