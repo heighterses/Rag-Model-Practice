@@ -8,9 +8,8 @@ character_splitter = CharacterTextSplitter(chunk_size=200,
                                            chunk_overlap=0,
                                            separator='')
 
-
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500,
-                                                    chunk_overlap=150)
+                                               chunk_overlap=150)
 
 # text_splitter = CharacterTextSplitter(
 #     separator="\n",
@@ -34,7 +33,6 @@ documents = []
 for loader in loaders:
     documents.extend(loader.load())
 
-
 # pages = documents
 # print(len(pages))
 
@@ -43,4 +41,6 @@ for loader in loaders:
 # print(content)
 
 test = text_splitter.split_documents(documents)
-print(test)
+print(len(test))
+
+# Add Embeddings
