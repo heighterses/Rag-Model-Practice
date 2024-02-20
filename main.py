@@ -44,3 +44,14 @@ test = text_splitter.split_documents(documents)
 print(len(test))
 
 # Add Embeddings
+from langchain.embeddings.openai import OpenAIEmbeddings
+import numpy as np
+
+embedding = OpenAIEmbeddings()
+
+s1 = "I love dogs"
+s2 = "I love cats"
+s3 = " My brother has two best friends"
+s4 = "Horse is running faster than aunt"
+
+np.dot(s1, s2)
