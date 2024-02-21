@@ -1,5 +1,5 @@
 import rm
-from chromadb.cli.cli import docs  # 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
+from chromadb.cli.cli import docs  
 
 from langchain_community.document_loaders import PyPDFLoader
 import os
